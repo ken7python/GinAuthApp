@@ -42,4 +42,8 @@
             <data android:mimeType="text/plain"/>
         </intent>
     </queries>
+    <application
+        android:usesCleartextTraffic="true"
+        ... >
+    </application>
 </manifest>

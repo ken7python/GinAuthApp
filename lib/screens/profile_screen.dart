@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+import '../services/api_service.dart';
+
+class ProfileScreen extends StatefulWidget {
+  @override
+  _ProfileScreenState createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final ApiService _apiService = ApiService();
+  Map<String, dynamic>? _profile;
+  void _loadProfile() async {
+    final profile = await _apiService.getProfile();
+    setState(() {
+      _profile = profile;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfile();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("プロフィール")),
+      body: Center(
+        child: _profile == null ? CircularProgressIndicator() : Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("ユーザー名: ${_profile!["username"]}"),
+          ],
+        ),
+      )
+    );
+  }
+}
