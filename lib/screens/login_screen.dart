@@ -24,12 +24,13 @@ class _LoginScreenState extends State<LoginScreen> {
       _usernameController.text,
       _passwordController.text,
     );
-    setState(() {
-      _message = token ?? "ログイン失敗";
-    });
 
-    if (token != null){
+    if (token != null && !token.startsWith("Error:")) { // エラーの場合は遷移しない
       Navigator.pushReplacementNamed(context, '/profile');
+    } else {
+      setState(() {
+        _message = "ログインに失敗しました";
+      });
     }
   }
 

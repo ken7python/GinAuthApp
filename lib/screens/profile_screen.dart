@@ -9,6 +9,12 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   final ApiService _apiService = ApiService();
   Map<String, dynamic>? _profile;
+
+  void _logout(BuildContext context) async {
+    await _apiService.logout();
+    Navigator.pushReplacementNamed(context, '/login');  // ログイン画面へ遷移
+  }
+
   void _loadProfile() async {
     final profile = await _apiService.getProfile();
     setState(() {
@@ -31,6 +37,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("ユーザー名: ${_profile!["username"]}"),
+            ElevatedButton(
+              onPressed: () => _logout(context),
+              child: Text("ログアウト"),
+            ),
           ],
         ),
       )
