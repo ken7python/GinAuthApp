@@ -1,16 +1,26 @@
-# authapp
+# GinAuthApp
 
-A new Flutter project.
+GinAuthApp は、[GinAuth](https://github.com/ken7python/GinAuth) をバッグエンドとして使用するFlutterアプリです。ユーザー登録、ログインの認証機能を提供します。
 
-## Getting Started
+## 主な機能
+ - **ユーザー登録**
+ - **ログイン**
+ - **ログインしているユーザーのユーザー名表示**
+ - **Dioを使ったAPI通信**
+ - **エラーハンドリングを強化**
+ - **シンプルでわかりやすいUI**
 
-This project is a starting point for a Flutter application.
+## 環境構築 & セットアップ
+```sh
+git clone https://github.com/ken7python/GinAuthApp.git
+cd GinAuthApp
+flutter pub get
+```
 
-A few resources to get you started if this is your first Flutter project:
+## バッグエンド(GinAuth)のセットアップ
+[GinAuth](https://github.com/ken7python/GinAuth) を参照
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## アプリの実行
+```sh
+flutter run
+```
