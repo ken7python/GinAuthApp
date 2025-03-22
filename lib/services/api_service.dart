@@ -64,7 +64,19 @@ class ApiService {
         return "Error: ${response.data["error"]}";
       }
       return response.data['message'] ?? "登録成功";
+    } on DioException catch (e) {
+      if (e.response != null &&
+          e.response?.data is Map &&
+          e.response?.data.containsKey("error")) {
+        return "Error: ${e.response?.data["error"]}";
+      }
+      print("Dio Error: ${e.message}");
+      return "Error: ${e.message}";
+    } on SocketException catch (e) {
+      print("SocketException: ${e.message}");
+      return "Error: No Internet connection";
     } catch (e) {
+      print("Unexpected Error: $e");
       return "Error: $e";
     }
   }
@@ -90,6 +102,11 @@ class ApiService {
       }
       return "Error: トークンが見つかりません";
     } on DioException catch (e) {
+      if (e.response != null &&
+          e.response?.data is Map &&
+          e.response?.data.containsKey("error")) {
+        return "Error: ${e.response?.data["error"]}";
+      }
       print("Dio Error: ${e.message}");
       return "Error: ${e.message}";
     } on SocketException catch (e) {
@@ -117,6 +134,11 @@ class ApiService {
       }
       return response.data;
     } on DioException catch (e) {
+      if (e.response != null &&
+          e.response?.data is Map &&
+          e.response?.data.containsKey("error")) {
+        return {"error": e.response?.data["error"]};
+      }
       print("Dio Error: ${e.message}");
       return {"error": "通信エラー: ${e.message}"};
     } on SocketException catch (e) {

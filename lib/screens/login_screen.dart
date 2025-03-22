@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
       Navigator.pushReplacementNamed(context, '/profile');
     } else {
       setState(() {
-        _message = "ログインに失敗しました";
+        _message = token;
       });
     }
   }
@@ -54,6 +54,14 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(height: 20.0),
             ElevatedButton(onPressed: _login, child: Text("ログイン")),
             Text(_message),
+
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/register');
+              },
+              child: Text("新規登録"),
+            ),
           ],
         )
       )

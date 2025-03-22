@@ -14,7 +14,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _isLoading = false;
 
   void _register() async {
-
     if (_usernameController.text.isEmpty || _passwordController.text.isEmpty) {
       setState(() {
         _message = "ユーザー名とパスワードを入力してください";
@@ -42,9 +41,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
 
     if (res != null && !res.startsWith("Error")) {
+      await _apiService.logout();
+      await _apiService.login(_usernameController.text, _passwordController.text);
+      /*
       Future.delayed(Duration(seconds: 1), () {
         Navigator.pushReplacementNamed(context, '/profile');
       });
+      */
+      Navigator.pushReplacementNamed(context, '/profile');
     }
 }
 
