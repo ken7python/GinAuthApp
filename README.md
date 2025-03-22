@@ -10,6 +10,9 @@ GinAuthApp は、[GinAuth](https://github.com/ken7python/GinAuth) をバッグ�
  - **エラーハンドリングを強化**
  - **シンプルでわかりやすいUI**
 
+ ## 📷 スクリーンショット
+![ログイン画面](assets/images/screenshot1.png)
+
 ## 環境構築 & セットアップ
 ```sh
 git clone https://github.com/ken7python/GinAuthApp.git
