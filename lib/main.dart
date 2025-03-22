@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: "GinAuth App",
       initialRoute: "/",
       routes: {
-        "/": (context) => LoginScreen(),
+        "/": (context) => ProfileScreen(),
         "/profile": (context) => ProfileScreen(),
         "/register": (context) => RegisterScreen(),
         "/login": (context) => LoginScreen(),

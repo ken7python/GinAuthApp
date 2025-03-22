@@ -17,9 +17,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void _loadProfile() async {
     final profile = await _apiService.getProfile();
-    setState(() {
-      _profile = profile;
-    });
+    if (profile.containsKey("error")) {
+      print("Error: ${profile["error"]}");
+      _logout(context);
+      Navigator.pushReplacementNamed(context, '/login');
+    } else {
+      setState(() {
+        _profile = profile;
+      });
+    }
   }
 
   @override
